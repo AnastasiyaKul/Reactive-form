@@ -1,0 +1,13 @@
+<div *ngFor="let field of configs">
+  <div [formGroup]="reactiveForm" *ngIf="field.isInput">
+    <label>{{field.label}}</label>
+    <input [type]="field.type" [attr.placeholder]="field.placeholder" [formGroupName]="field.name"/>
+  </div>
+
+  <div [formGroup]="reactiveForm" *ngIf="!field.isInput">
+    <label>{{field.label}}</label>
+    <select [formGroupName]="field.name">
+      <option *ngFor="let item of field.options">{{item}}</option>
+    </select>
+  </div>
+</div>
